@@ -1,0 +1,54 @@
+### Create a new request
+POST http://localhost:4004/requests/join
+Content-Type: application/json
+
+{
+  "studentId": "fbaba17b-e2d7-4583-a019-757e457075b0",
+  "type": "HOSTEL_JOIN",
+  "hostelId": "db4954b0-8337-4b60-a10e-32786d437ce3"
+
+}
+###
+POST http://localhost:4004/requests/leave
+Content-Type: application/json
+
+{
+    "studentId": "690b8c34a8f1a40a4a403b15",
+    "type": "HOSTEL_LEAVE",
+    "details": {
+      "roomId": "e4e6fb26-7d7b-4f24-aad0-f563d3149adc",
+      "message": "I want to leave hostel"
+    }
+}
+
+### Get all requests
+GET http://localhost:4004/requests
+
+### Get requests by studentId
+GET http://localhost:4003/requests/student/1234-uuid
+
+### Get request by id
+GET http://localhost:4003/requests/6905d655eb11a01b63542ef1
+
+###
+GET http://localhost:4004/requests/hostel/db4954b0-8337-4b60-a10e-32786d437ce3
+Content-Type: application/json
+
+### Update status (partial update)
+PATCH http://localhost:4003/requests/6903c059ff7e9139d1e8b67b/status?status=APPROVED&reviewedBy=warden-uuid
+
+### Full update (replace entire request)
+PUT http://localhost:4003/requests/abcd-uuid
+Content-Type: application/json
+
+{
+  "studentId": "1234-uuid",
+  "type": "HOSTEL_LEAVE",
+  "details": {
+    "leaveFrom": "2025-10-10",
+    "leaveTo": "2025-10-20"
+  }
+}
+
+### Delete a request
+DELETE http://localhost:4003/requests/abcd-uuid

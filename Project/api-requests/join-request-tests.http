@@ -1,0 +1,61 @@
+### Join request - expected 200 (create new join request)
+POST http://localhost:4004/requests/join
+Content-Type: application/json
+Authorization: Bearer {token}
+
+{
+  "studentId": "fbaba17b-e2d7-4583-a019-757e457075b0",
+  "type": "HOSTEL_JOIN",
+  "hostelId": "db4954b0-8337-4b60-a10e-32786d437ce3"
+
+}
+
+### Join request conflict - expected 409 (pending request for same student+hostel)
+POST http://localhost:4003/requests/leave
+Content-Type: application/json
+
+{
+  "studentId": "21a489b6-cc96-493a-9d3a-af3258234053",
+  "type": "HOSTEL_LEAVE",
+  "details": {
+    "roomId": "8d037453-5c90-44bc-9495-9b74077fb931"
+  }
+}
+
+### Join request bad request - expected 400 (missing required fields)
+POST http://localhost:4003/requests/join
+Content-Type: application/json
+
+{
+  "studentId": "",
+  "type": "HOSTEL_JOIN",
+  "details": {}
+}
+
+### Create generic request - expected 200
+POST http://localhost:4003/requests
+Content-Type: application/json
+
+{
+  "studentId": "aea9cdc8-3d7b-4c41-9e43-bbd607c9d764",
+  "type": "HOSTEL_JOIN",
+  "details": {
+    "hostelId": "db4954b0-8337-4b60-a10e-32786d437ce3",
+    "note": "Please allocate"
+  }
+}
+
+### Get requests by student - expected 200
+GET http://localhost:4003/requests/student/aea9cdc8-3d7b-4c41-9e43-bbd607c9d764
+
+### Get a request by id - replace {id} - expected 200
+GET http://localhost:4003/requests/{id}
+
+### Update request status (approve) - expected 200 (requires Authorization header with Bearer token)
+PATCH http://localhost:4003/requests/{id}/status?status=APPROVED&reviewedBy=warden1
+Authorization: Bearer {token}
+
+
+### Delete request - expected 204
+DELETE http://localhost:4003/requests/{id}
+

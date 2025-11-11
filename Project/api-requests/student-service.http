@@ -1,0 +1,102 @@
+### Get all students
+GET http://localhost:4004/students
+Authorization: Bearer {{token}}
+Accept: application/json
+###
+GET http://localhost:4000/students/72174496-e183-40d3-8967-4d7c5f2cf69c/name
+Authorization: Bearer {{token}}
+Accept: application/json
+###
+POST http://localhost:4004/students/22afce18-8415-41f2-a48a-e819e6111510/assign-hostel
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "hostelId" : "11"
+}
+###
+### Create a new student
+POST http://localhost:4004/students
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Sam",
+  "email": "sam@example.com",
+  "password": "securePass123",
+  "graduationYear": 2027,
+  "uid": "23BCS11111",
+  "address": "UP",
+  "dateOfBirth": "2004-08-15",
+  "gender": "Male",
+  "phone": "+919876543210"
+}
+
+
+###
+
+### Update an existing student
+PUT http://localhost:4004/students/16f809ea-b801-45d3-af81-b5f5f81b6780
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "John Doe Updated twice",
+  "email": "john.updated@example.com",
+  "password": "newPass456",
+  "graduationYear": 2027,
+  "uid": "23BCS10001",
+  "address": "456 New Address, City",
+  "dateOfBirth": "2004-05-15",
+  "gender": "Male",
+  "phone": "9876543210",
+  "hostel": "Hostel B",
+  "roomNumber": 202
+}
+### Get an student
+GET http://localhost:4000/students/21a489b6-cc96-493a-9d3a-af3258234053
+Content-Type: application/json
+Authorization: Bearer {{token}}
+Accept: application/json
+###
+
+### Get all students
+GET http://localhost:4004/students/me/full
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### Delete a student
+DELETE http://localhost:4004/students/48efc9fc-0d20-4d7c-8d13-7464ccb45ce2
+Accept: application/json
+Authorization: Bearer {{token}}
+###
+PUT http://localhost:4004/students/me
+Content-Type: application/json
+Authorization: Bearer {{token}}
+Accept: application/json
+
+{
+
+  "name": "naman",
+  "email": "nam@example.com",
+  "password": "securePass123",
+  "graduationYear": 2027,
+  "uid": "23BCS1000012",
+  "address": "123 Main St, City",
+  "dateOfBirth": "2004-05-15",
+  "gender": "Male",
+  "phone": "9876543210",
+  "roomNumber": 101
+
+}
+###
+POST http://localhost:4000/students/22afce18-8415-41f2-a48a-e819e6111510/assign-room
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "hostelId" : "ZB",
+    "roomId" : "101"
+}

@@ -1,0 +1,65 @@
+### Get all students
+GET http://localhost:4004/wardens
+Accept: application/json
+Authorization: Bearer {{token}}
+
+
+###
+GET http://localhost:4004/wardens/de1e1df0-96f4-4ad8-93d8-323928c1340c
+Accept: application/json
+Authorization: Bearer {{token}}
+###
+
+GET http://localhost:4004/wardens/me/full
+Accept: application/json
+Authorization: Bearer {{token}}
+###
+
+GET http://localhost:4002/wardens/me/hostelId
+Accept: application/json
+Authorization: Bearer {{token}}
+###
+
+### Create a new warden
+POST http://localhost:4004/wardens
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+  "name": "Brad Pitt",
+  "email": "brad@example.com",
+  "password": "securePass123",
+  "gender": "Male",
+  "phone": "9876543210",
+  "hostelId": "c37c7726-609f-4a61-865f-1ddd04f1f687"
+}
+
+###
+
+### Update an existing student
+PUT http://localhost:4004/wardens/23242d42-2dc2-4069-9fd8-824040b439be
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Sanjay",
+  "email": "sanjay@example.com",
+  "password": "securePass123",
+  "gender": "Male",
+  "phone": "9876543210",
+  "hostel": "Hostel B",
+  "roomNumber": 202
+}
+
+###
+
+### Delete a student
+DELETE http://localhost:4004/wardens/f7a1352a-a7b4-475b-a1ae-9e24154ec4eb
+Accept: application/json
+Authorization: Bearer {{token}}
+###
+
+GET http://localhost:4002/wardens/me/full
+Accept: application/json
+Authorization: Bearer {{token}}
